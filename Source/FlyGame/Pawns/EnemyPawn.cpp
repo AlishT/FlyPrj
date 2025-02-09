@@ -2,6 +2,7 @@
 
 
 #include "EnemyPawn.h"
+#include "FlyGame/Components/CombatComponent.h"
 
 AEnemyPawn::AEnemyPawn()
 {
@@ -14,7 +15,21 @@ AEnemyPawn::AEnemyPawn()
 	GetMuzzle()->SetupAttachment(WeaponMesh);
 }
 
-void AEnemyPawn::RotateTurret(FVector& TargetLocation)
+void AEnemyPawn::Shoot()
+{
+	FVector CurrentDirection = TurretMesh->GetForwardVector();
+	FVector TargetDirection = TargetLocation - TurretMesh->GetComponentLocation();
+
+	float RotationAngleCosine = CurrentDirection.CosineAngle2D(TargetDirection);
+	float RotationAngle = FMath::RadiansToDegrees(FMath::Acos(RotationAngleCosine));
+
+	if (RotationAngle <= TurretAimError && GetCombat())
+	{
+		GetCombat()->Shoot();
+	}
+}
+
+void AEnemyPawn::RotateTurret()
 {
 	FVector StartLocation = TurretMesh->GetComponentLocation();
 	FRotator StartRotation = TurretMesh->GetComponentRotation();
@@ -30,7 +45,7 @@ void AEnemyPawn::RotateTurret(FVector& TargetLocation)
 	TurretMesh->SetWorldRotation(TurretRotation);
 }
 
-void AEnemyPawn::RotateWeapon(FVector& TargetLocation)
+void AEnemyPawn::RotateWeapon()
 {
 	FVector StartLocation = WeaponMesh->GetComponentLocation();
 	FRotator StartRotation = WeaponMesh->GetComponentRotation();

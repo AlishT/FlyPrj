@@ -51,6 +51,10 @@ private:
 	void AltFire();
 
 public:
+	virtual void Shoot() override;
+
+	void AltShoot();
+
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 };

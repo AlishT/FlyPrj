@@ -15,8 +15,6 @@ APlayerPawn::APlayerPawn()
 	PlayerCamera->SetupAttachment(GetRootComponent());
 	PlayerCamera->bUsePawnControlRotation = true;
 
-	//GetMuzzle()->SetupAttachment(PlayerCamera);
-
 	PawnMovement = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("PawnMovement"));
 
 }
@@ -63,21 +61,32 @@ void APlayerPawn::Look(const FInputActionValue& Value)
 
 void APlayerPawn::Fire()
 {
-	bool bCanFire = GetCombat() && GetCombat()->HasAmmo();
+	Shoot();
 	
-	if (bCanFire)
-	{
-		Shoot();
-	}
 }
 
 void APlayerPawn::AltFire()
+{
+	AltShoot();
+}
+
+void APlayerPawn::Shoot()
+{
+	bool bCanFire = GetCombat() && GetCombat()->HasAmmo();
+
+	if (bCanFire)
+	{
+		GetCombat()->Shoot();
+	}
+}
+
+void APlayerPawn::AltShoot()
 {
 	bool bCanFire = GetCombat() && GetCombat()->HasAltAmmo();
 
 	if (bCanFire)
 	{
-		AltShoot();
+		GetCombat()->AltShoot();
 	}
 }
 

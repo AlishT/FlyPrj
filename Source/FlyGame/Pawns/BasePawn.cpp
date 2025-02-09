@@ -59,17 +59,8 @@ void ABasePawn::EliminationHandler(float Health)
 
 void ABasePawn::Shoot()
 {
-	if (!GetCombat()) return;
-
-	GetCombat()->Shoot();
 }
 
-void ABasePawn::AltShoot()
-{
-	if (!GetCombat()) return;
-
-	GetCombat()->AltShoot();
-}
 
 
 

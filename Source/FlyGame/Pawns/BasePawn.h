@@ -53,9 +53,7 @@ private:
 	void EliminationHandler(float Health);
 
 public:
-	void Shoot();
-
-	void AltShoot();
+	virtual void Shoot();
 
 	FORCEINLINE UStaticMeshComponent* GetBaseMesh() const{ return BaseMesh; }
 	FORCEINLINE UHealthComponent* GetHealthComp() const { return HealthComponent; }

@@ -20,9 +20,11 @@ EBTNodeResult::Type UBTT_RotateTurret::ExecuteTask(UBehaviorTreeComponent& Owner
 		{
 			if (!AIConrtoler->GetFocusActor()) return EBTNodeResult::Failed;
 
-			FVector Location = AIConrtoler->GetFocusActor()->GetActorLocation();
-			AIPawn->RotateTurret(Location);
-			AIPawn->RotateWeapon(Location);
+			FVector TargetLocation = AIConrtoler->GetFocusActor()->GetActorLocation();
+			
+			AIPawn->SetTargetLocation(TargetLocation);
+			AIPawn->RotateTurret();
+			AIPawn->RotateWeapon();
 		}
 	}
 

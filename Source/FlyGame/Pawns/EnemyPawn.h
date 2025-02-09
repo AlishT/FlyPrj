@@ -25,7 +25,7 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Default")
 	TObjectPtr<UStaticMeshComponent> WeaponMesh = nullptr;
 
-	UPROPERTY(EditAnywhere, Category = "Behavior Tree", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, Category = "Behavior Tree")
 	TObjectPtr<UBehaviorTree> BehaviorTree = nullptr;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Default")
@@ -43,11 +43,20 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Default")
 	float MinAngle = -20.f;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Default", meta = (Units = "Degrees"))
+	float TurretAimError = 0.f;
+
+	UPROPERTY()
+	FVector TargetLocation = FVector::ZeroVector;
+
 
 public:
-	void RotateTurret(FVector& TargetLocation);
+	virtual void Shoot() override;
+
+	void RotateTurret();
 	
-	void RotateWeapon(FVector& TargetLocation);
+	void RotateWeapon();
 
 	FORCEINLINE UBehaviorTree* GetBehaviorTree() const { return BehaviorTree; }
+	FORCEINLINE void SetTargetLocation(const FVector& Location) { TargetLocation = Location; }
 };

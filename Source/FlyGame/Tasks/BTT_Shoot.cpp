@@ -20,6 +20,9 @@ EBTNodeResult::Type UBTT_Shoot::ExecuteTask(UBehaviorTreeComponent& OwnerComp, u
 		{
 			if (!AIConrtoler->GetFocusActor()) return EBTNodeResult::Failed;
 
+			FVector TargetLocation = AIConrtoler->GetFocusActor()->GetActorLocation();
+			
+			AIPawn->SetTargetLocation(TargetLocation);
 			AIPawn->Shoot();
 		}
 	}
