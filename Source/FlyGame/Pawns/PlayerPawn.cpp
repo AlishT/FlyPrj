@@ -62,7 +62,6 @@ void APlayerPawn::Look(const FInputActionValue& Value)
 void APlayerPawn::Fire()
 {
 	Shoot();
-	
 }
 
 void APlayerPawn::AltFire()

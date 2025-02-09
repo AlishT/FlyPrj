@@ -24,9 +24,6 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-public:	
-	virtual void Tick(float DeltaTime) override;
-
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Default")
 	TObjectPtr<UCapsuleComponent> CapsuleComponent = nullptr;

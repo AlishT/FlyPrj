@@ -11,7 +11,10 @@ void AHealthItem::UpdatePlayerStats(AActor* OtherActor)
 	{
 		APlayerPawn* Player = Cast<APlayerPawn>(OtherActor);
 
-		if (!Player && !Player->GetHealthComp()) return;
+		if (!Player && !Player->GetHealthComp())
+		{
+			return;
+		}
 
 		Player->GetHealthComp()->UpdateCurrentHealth(GetUpdateValue());
 

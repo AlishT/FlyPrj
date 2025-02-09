@@ -84,7 +84,8 @@ private:
 
 public:
 	void Shoot();
-	
+
+	//For using the player's alternative projectiles or can be use for alternative fire in enemies if it is necessary
 	void AltShoot();
 
 	bool HasAmmo();

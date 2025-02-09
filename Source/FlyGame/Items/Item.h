@@ -19,9 +19,6 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-public:	
-	virtual void Tick(float DeltaTime) override;
-
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Default")
 	TObjectPtr<UCapsuleComponent> CollisionSphere = nullptr;
@@ -39,6 +36,7 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Default")
 	TSubclassOf<AActor> PlayerClass;
 
+	//A virtual function that is defined in derived classes: restores the player's health or ammunition reserves
 	virtual void UpdatePlayerStats(AActor* OtherActor);
 
 	FORCEINLINE float GetUpdateValue() const { return UpdateValue; }

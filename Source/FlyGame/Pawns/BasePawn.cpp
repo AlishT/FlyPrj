@@ -11,7 +11,7 @@
 
 ABasePawn::ABasePawn()
 {
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 
 	CapsuleComponent = CreateDefaultSubobject<UCapsuleComponent>(TEXT("DefaultRoot"));
 	SetRootComponent(CapsuleComponent);
@@ -34,15 +34,12 @@ void ABasePawn::BeginPlay()
 
 }
 
-void ABasePawn::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
-
 void ABasePawn::EliminationHandler(float Health)
 {
-	if (Health > 0) return;
+	if (Health > 0)
+	{
+		return;
+	}
 
 	if (ElimSound)
 	{

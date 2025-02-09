@@ -23,7 +23,10 @@ void AEnemyController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);
 
-	if (!InPawn) return;
+	if (!InPawn)
+	{
+		return;
+	}
 
 	AEnemyPawn* AIPawn = Cast<AEnemyPawn>(InPawn);
 

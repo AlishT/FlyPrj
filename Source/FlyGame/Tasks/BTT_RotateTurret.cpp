@@ -6,9 +6,16 @@
 #include "FlyGame/Controllers/EnemyController.h"
 #include "FlyGame/Pawns/EnemyPawn.h"
 
+UBTT_RotateTurret::UBTT_RotateTurret(const FObjectInitializer& ObjectInitializer)
+{
+}
+
 EBTNodeResult::Type UBTT_RotateTurret::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
-	if (!OwnerComp.GetAIOwner()) return EBTNodeResult::Failed;
+	if (!OwnerComp.GetAIOwner())
+	{
+		return EBTNodeResult::Failed;
+	}
 
 	AEnemyController* AIConrtoler = Cast<AEnemyController>(OwnerComp.GetAIOwner());
 
@@ -18,7 +25,10 @@ EBTNodeResult::Type UBTT_RotateTurret::ExecuteTask(UBehaviorTreeComponent& Owner
 
 		if (AIPawn)
 		{
-			if (!AIConrtoler->GetFocusActor()) return EBTNodeResult::Failed;
+			if (!AIConrtoler->GetFocusActor())
+			{
+				return EBTNodeResult::Failed;
+			}
 
 			FVector TargetLocation = AIConrtoler->GetFocusActor()->GetActorLocation();
 			
@@ -27,8 +37,6 @@ EBTNodeResult::Type UBTT_RotateTurret::ExecuteTask(UBehaviorTreeComponent& Owner
 			AIPawn->RotateWeapon();
 		}
 	}
-
-	FinishLatentTask(OwnerComp, EBTNodeResult::Succeeded);
 
 	return EBTNodeResult::Succeeded;
 }

@@ -7,9 +7,7 @@
 UHealthComponent::UHealthComponent()
 {
 	PrimaryComponentTick.bCanEverTick = false;
-
 }
-
 
 void UHealthComponent::BeginPlay()
 {
@@ -27,13 +25,6 @@ void UHealthComponent::BeginPlay()
 			PlayerController->SetHealthHUD(MaxHealth, CurrentHealth);
 		}
 	}
-}
-
-
-void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
 }
 
 void UHealthComponent::OnTakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* InstigateBy, AActor* DamageCauser)

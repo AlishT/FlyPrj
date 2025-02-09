@@ -124,7 +124,10 @@ void UCombatComponent::AltShoot()
 
 void UCombatComponent::ToSpawnProjectile(EProjectileType Type)
 {
-	if (!Pawn) return;
+	if (!Pawn)
+	{
+		return;
+	}
 
 	FVector CameraLocation;
 	FRotator CameraRotation;

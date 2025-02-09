@@ -14,5 +14,8 @@ class FLYGAME_API UBTT_RotateTurret : public UBTTask_BlackboardBase
 {
 	GENERATED_BODY()
 	
+public:
+	UBTT_RotateTurret(const FObjectInitializer& ObjectInitializer);
+
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 };

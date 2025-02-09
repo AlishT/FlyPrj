@@ -51,8 +51,10 @@ private:
 	void AltFire();
 
 public:
+	//A virtual function that is defined in derived classes: for APlayerPawn, it checks the number of projectiles; for AEnemyPawn, it determines the angle to start shooting.
 	virtual void Shoot() override;
 
+	//For using the player's alternative projectiles
 	void AltShoot();
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;

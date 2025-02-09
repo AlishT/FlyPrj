@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/GameMode.h"
+#include "GameFramework/GameModeBase.h"
 #include "FlyGameMode.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class FLYGAME_API AFlyGameMode : public AGameMode
+class FLYGAME_API AFlyGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 	

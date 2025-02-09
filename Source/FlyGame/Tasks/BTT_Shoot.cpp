@@ -6,9 +6,16 @@
 #include "FlyGame/Controllers/EnemyController.h"
 #include "FlyGame/Pawns/EnemyPawn.h"
 
+UBTT_Shoot::UBTT_Shoot(const FObjectInitializer& ObjectInitializer)
+{
+}
+
 EBTNodeResult::Type UBTT_Shoot::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
-	if (!OwnerComp.GetAIOwner()) return EBTNodeResult::Failed;
+	if (!OwnerComp.GetAIOwner())
+	{
+		return EBTNodeResult::Failed;
+	}
 	
 	AEnemyController* AIConrtoler = Cast<AEnemyController>(OwnerComp.GetAIOwner());
 
@@ -18,7 +25,10 @@ EBTNodeResult::Type UBTT_Shoot::ExecuteTask(UBehaviorTreeComponent& OwnerComp, u
 
 		if (AIPawn)
 		{
-			if (!AIConrtoler->GetFocusActor()) return EBTNodeResult::Failed;
+			if (!AIConrtoler->GetFocusActor())
+			{
+				return EBTNodeResult::Failed;
+			}
 
 			FVector TargetLocation = AIConrtoler->GetFocusActor()->GetActorLocation();
 			

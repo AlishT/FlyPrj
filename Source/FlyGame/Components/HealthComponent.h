@@ -22,9 +22,6 @@ protected:
 	
 	virtual void BeginPlay() override;
 
-public:	
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
 private:
 	UPROPERTY(EditAnywhere, Category = "Default", meta = (AllowPrivateAccess = "true"))
 	float MaxHealth = 100.f;
@@ -42,6 +39,7 @@ public:
 	UPROPERTY(BlueprintAssignable)
 	FOnHealthChenged OnHealthChenged;
 
+	//Restores CurrentHealth, updates the health bar, and is called in AHealthItem
 	void UpdateCurrentHealth(float Health);
 
 	FORCEINLINE float GetMaxHealth() const { return MaxHealth; }

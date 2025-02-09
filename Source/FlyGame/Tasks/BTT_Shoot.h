@@ -14,5 +14,8 @@ class FLYGAME_API UBTT_Shoot : public UBTTask_BlackboardBase
 {
 	GENERATED_BODY()
 	
+public:
+	UBTT_Shoot(const FObjectInitializer& ObjectInitializer);
+
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 };

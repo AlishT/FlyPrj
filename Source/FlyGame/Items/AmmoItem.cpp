@@ -11,7 +11,10 @@ void AAmmoItem::UpdatePlayerStats(AActor* OtherActor)
 	{
 		APlayerPawn* Player = Cast<APlayerPawn>(OtherActor);
 
-		if (!Player && !Player->GetCombat()) return;
+		if (!Player && !Player->GetCombat())
+		{
+			return;
+		}
 
 		Player->GetCombat()->UpdateAmmo(GetUpdateValue());
 
